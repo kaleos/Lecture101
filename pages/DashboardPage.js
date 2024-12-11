@@ -3,7 +3,7 @@ class DashboardPage {
   constructor(page)
   {
     this.page = page;
-    this.products = page.locator(".card-body");            // Grabs all elements from each product.
+    this.products = page.locator(".card-body");           // Grabs all elements from each product.
     this.productsText = page.locator(".card-body b");     // Grabs only the title element from each product.
     this.cart = page.locator("[routerlink*='cart']");     // Element for the cart.
     this.orders = page.locator("button[routerlink*='myorders']");

@@ -1,7 +1,7 @@
 const { test, expect, request } = require("playwright/test");                         // request is needed for the API testing section.
 const loginPayLoad = {userEmail: "kaleos31@gmail.com", userPassword: "sonata666"}     // This is captured in a variable. It is coming from the Network tab, then Payload.
 const orderPayload = {orders: [{country: "Cuba", productOrderedId: "6581ca979fd99c85e8ee7faf"}]}     // This is captured in a variable. It is coming from the Network tab, then Payload after adding an item to cart and checkout.
-const {APiUtils} = require('./utils/APiUtils');
+const {APiUtils} = require('../utils/APiUtils');
 const fakePayLoadOrders = {data:[],messages:"No Orders"};
 //const noOrdersMessage = page.locator("//div[contains(@class, 'mt-4')]");
 

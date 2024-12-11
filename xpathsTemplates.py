@@ -58,8 +58,6 @@ text''
 
 //button[@id=”medium-dialog-submit”]
 
-//*[text() = "Review Pending Changes"]
-
 [href*="documents-request"]
 
 //div[contains(@class, 'user__name')] or in the case of the dom that has both classes like this user__name mt-5 then this is also good //div[contains(@class, 'mt-5')]

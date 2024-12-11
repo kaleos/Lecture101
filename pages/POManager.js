@@ -33,7 +33,7 @@ class POManager {
 
   async getOrdersHistoryPage()
   {
-    return this.ordersReviewPage;
+    return this.ordersHistoryPage;
   }
 
   async getOrdersReviewPage()

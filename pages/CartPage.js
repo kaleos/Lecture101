@@ -15,7 +15,7 @@ class CartPage
   async VerifyProductIsDisplayed(productName)
   {
     await this.cartProducts.waitFor();  // Wait until the li tag is displayed on the page, but starting with the parent which is div for the cart section.
-    const productLocator = this.getProductLocator(productName);
+    const productLocator = await this.getProductLocator(productName);
     const bool = await productLocator.isVisible(); // Verifies the locator is visible on the page. Since isVisible is an asynchronous method it needs to be awaited.
     expect(bool).toBeTruthy();
   }
@@ -27,7 +27,8 @@ class CartPage
 
   async getProductLocator(productName)
   {
-    return this.page.locator("h3:has-text('"+productName+"')");  //This will look only for elements with an h3 tag and that is why it will find adidas original in the cart instead of the homepage.
+    return this.page.locator("h3:has-text('"+productName+"')");                  //This will look only for elements with an h3 tag and that is why it will find adidas original in the cart instead of the homepage.
   }
 }
+
 module.exports = {CartPage};

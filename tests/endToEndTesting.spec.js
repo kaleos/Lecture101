@@ -3,23 +3,22 @@ const { test, expect } = require('@playwright/test');
 const {POManager} = require('../pages/POManager');
 const dataset = JSON.parse(JSON.stringify(require("../utils/endToEndTestingTestData.json")));  // Now dataSet has all the things needed from the endToEndTestingTestData.json file
 // Json->string->js object
-// Goal is to get to adidas original and add it to the cart
 
 test("Web Client App login for", async ({ page }) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
   const poManager = new POManager(page);   // This holds all the objects of the pages like LoginPage and DashboardPage.
-  const userName = "kaleos31@gmail.com";
-  const password = "sonata666"
-  const productName = "ADIDAS ORIGINAL";
+  //const userName = "kaleos31@gmail.com";
+  //const password = "sonata666"
+  //const productName = "ADIDAS ORIGINAL";
   const products = page.locator(".card-body");
   const loginPage = await poManager.getLoginPage();  
   await loginPage.goTo();
-  await loginPage.validLogin(userName,password);
+  await loginPage.validLogin(dataset.userName,dataset.password);
   const dashboardPage = await poManager.getDashboardPage();
-  await dashboardPage.searchProductAddCart(productName);  // Searches the product and adds it to the cart.
+  await dashboardPage.searchProductAddCart(dataset.productName);  // Searches the product and adds it to the cart.
   await dashboardPage.navigateToCart();
 
   const cartPage = await poManager.getCartPage();
-  await cartPage.VerifyProductIsDisplayed(productName);
+  await cartPage.VerifyProductIsDisplayed(dataset.productName);
   await cartPage.Checkout();
 
   const ordersReviewPage = await poManager.getOrdersReviewPage();

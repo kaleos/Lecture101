@@ -1,4 +1,4 @@
-const {test, expect} = require('@playwright/test');  // Comment this line out if errors occur.
+const {test, expect} = require('@playwright/test');
 const {customtest} = require('../utils/test-base');
 const {POManager} = require('../pages/POManager');
 // Json->string->js object
@@ -29,4 +29,19 @@ test(`Web Client App login for ${data.productName}`, async ({ page }) => {  // N
   await ordersHistoryPage.searchOrderAndSelect(orderId);
   expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
 });
+
+customtest.only("Web Client App login for", async ({ page, testDataForOrder}) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
+  const poManager = new POManager(page);   // This holds all the objects of the pages like LoginPage and DashboardPage.
+  const products = page.locator(".card-body");
+  const loginPage = await poManager.getLoginPage();  
+  await loginPage.goTo();
+  await loginPage.validLogin(testDataForOrder.userName,testDataForOrder.password);
+  const dashboardPage = await poManager.getDashboardPage();
+  await dashboardPage.searchProductAddCart(testDataForOrder.productName);  // Searches the product and adds it to the cart.
+  await dashboardPage.navigateToCart();
+  
+  const cartPage = await poManager.getCartPage();
+  await cartPage.VerifyProductIsDisplayed(testDataForOrder.productName);
+  await cartPage.Checkout();
+})
 }

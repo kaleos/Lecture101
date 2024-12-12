@@ -1,6 +1,6 @@
-const {base} = require('@playwright/test');
+const base = require('@playwright/test');
 
-exports.test = base.test.extend(
+exports.customtest = base.test.extend(
 {
   testDataForOrder : {
     userName : "kaleos31@gmail.com",

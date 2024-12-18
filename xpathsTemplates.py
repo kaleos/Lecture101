@@ -80,3 +80,5 @@ https://rahulshettyacademy.com/loginpagePractise/
 https://rahulshettyacademy.com/client
 
 https://rahulshettyacademy.com/AutomationPractice/
+
+//*[@id="mz-filter-panel-0-3"]/div/input

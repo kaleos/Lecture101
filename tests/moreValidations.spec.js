@@ -1,13 +1,14 @@
 const { test, expect } = require("playwright/test");
 // The goal here is to validate if the Hide/Show Example field is visible and then hidden on the page.
+// Also to validate the Google page and take a screenshot of the page.
+
+//test.describe.configure({mode:'parallel'});     // This will run the tests in parallel as opposed to sequentially.
+//test.describe.configure({mode:'serial'});       // This will run the tests sequentially as opposed to parallel. Also seems like this is the default mode at this point.
 
 test("Popup validations", async({page}) => {
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
   const confirmBtn = page.locator("//input[@id='confirmbtn']");
   const mouseHoverBtn = page.locator("//button[@id='mousehover']");
-  //await page.goto("https://www.google.com/");
-  //await page.goBack();
-  //await page.goForward();
   await expect(page.locator("//input[@id='displayed-text']")).toBeVisible();    // At this stage the field Hide/Show Example is visible.
   await page.locator("//input[@id='hide-textbox']").click();                    // Clicking on the Hide button makes the above field hidden.
   await expect(page.locator("//input[@id='displayed-text']")).toBeHidden();     // This validates if the field from line 8 is hidden.
@@ -22,7 +23,12 @@ test("Popup validations", async({page}) => {
   console.log(textCheck.split(" ")[1]);                                         // To retieve the text " Happy Subscibers!" we use the spaces therefore space in " " and the first index in the array.
 })
 
-test("Screenshot & visual comparision", async({page}) => {
+test('Visual', async({page}) => {
+  await page.goto("https://www.google.com/");
+  expect(await page.screenshot()).toMatchSnapshot('landing.png');              // Screenshot here will take a screenshot of the entire page, then compare it to make sure the screenshot landing.png matches the initial screenshot of the page.
+})
+
+test("Screenshot & visual comparaison", async({page}) => {
   const hideShowField = page.locator("//input[@id='displayed-text']");
 
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -32,8 +38,3 @@ test("Screenshot & visual comparision", async({page}) => {
   await page.screenshot({path: 'screenshot.png'});                             // This takes a screenshot of the entire screen and needs a path to put it somewhere. Note: The playwright.config.js file already has a setup for taking screenshots.
   expect(hideShowField).toBeHidden();
 });
-
-test.only('Visual', async({page}) => {
-  await page.goto("https://www.google.com/");
-  expect(await page.screenshot()).toMatchSnapshot('landing.png');              // Screenshot here will take a screenshot of the entire page, then compare it to make sure the screenshot landing.png matches the initial screenshot of the page.
-})

@@ -6,7 +6,8 @@ const dataset = JSON.parse(JSON.stringify(require("../utils/endToEndTestingTestD
 
 for(const data of dataset)
 {  
-test(`Web Client App login for ${data.productName}`, async ({ page }) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
+
+test(`Client App login for ${data.productName}`, async ({ page }) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
   const poManager = new POManager(page);   // This holds all the objects of the pages like LoginPage and DashboardPage.
   const products = page.locator(".card-body");
   const loginPage = await poManager.getLoginPage();  
@@ -30,7 +31,7 @@ test(`Web Client App login for ${data.productName}`, async ({ page }) => {  // N
   expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
 });
 
-customtest.only("Verify another item can be tested ", async ({ page, testDataForOrder}) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
+customtest.only(`Verify another item can be tested ${data.productName}`, async ({ page, testDataForOrder}) => {  // Now the test title will change dynamically and therefore 2 tests will be executed.
   const poManager = new POManager(page);   // This holds all the objects of the pages like LoginPage and DashboardPage.
   const products = page.locator(".card-body");
   const loginPage = await poManager.getLoginPage();  
@@ -45,3 +46,6 @@ customtest.only("Verify another item can be tested ", async ({ page, testDataFor
   await cartPage.Checkout();
 })
 }
+
+// Test files will run in parallel.
+// Individual tests will run sequentially.

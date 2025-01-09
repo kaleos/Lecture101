@@ -10,3 +10,5 @@ npx playwright test tests/UIControls.spec.js --debug (For debugging)
 
 npx playwright test --ui (Has all tests located to the left like a test runner
 like in Cypress)
+
+npx playwright test --grep @Web (Runs only tests with the tag @Web and if another tag is needed then it can be added to the test)

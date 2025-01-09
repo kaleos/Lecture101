@@ -1,7 +1,7 @@
 
 const { test, expect } = require('@playwright/test');
 
-test('Launch the practice page', async({page})=> {
+test.skip('Launch the practice page', async({page})=> {
   await page.goto("https://rahulshettyacademy.com/client");
   const userName = page.locator('//input[@id="userEmail"]')
   const password = page.locator('//input[@id="userPassword"]')

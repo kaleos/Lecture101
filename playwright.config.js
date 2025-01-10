@@ -13,19 +13,31 @@ const config = {
 
   reporter: 'html',
   projects: [
-    {
-      name: 'safari',
-      use: {
-        browserName : 'webkit',
-        headless: false,
-        viewport: { width: 1280, height: 720 },
-        screenshot: 'only-on-failure',                // This will capture a screenshot of errors only.
-        video: 'retain-on-failure',       // Records video for each test, but deletes the passing tests afterwards.
-        ignoreHttpsErrors: true,
-        trace: 'retain-on-failure',       // To collect the trace on every execution with complete log with details. Setting to 'on' for is for both passed and failed logs, but <retain-on-failure> is enough for only failed tests.
-        //...devices['iPhone 11']
-      }
-    },
+    // {
+    //   name: 'safari',
+    //   use: {
+    //     browserName : 'webkit',
+    //     headless: false,
+    //     viewport: { width: 1280, height: 720 },
+    //     screenshot: 'only-on-failure',                // This will capture a screenshot of errors only.
+    //     video: 'retain-on-failure',       // Records video for each test, but deletes the passing tests afterwards.
+    //     ignoreHttpsErrors: true,
+    //     trace: 'retain-on-failure',       // To collect the trace on every execution with complete log with details. Setting to 'on' for is for both passed and failed logs, but <retain-on-failure> is enough for only failed tests.
+    //     //...devices['iPhone 11']
+    //   }
+    // },
+    // {
+    //   name: "firefox",
+    //   use: {
+    //     browserName : 'firefox',
+    //     headless: false,
+    //     viewport: { width: 1280, height: 720 },
+    //     screenshot: 'only-on-failure',
+    //     video: 'retain-on-failure',
+    //     ignoreHttpsErrors: true,
+    //     trace: 'retain-on-failure'
+    //   }
+    // },
     {
       name: "chrome",
       use: {
@@ -40,18 +52,6 @@ const config = {
         //...devices['Galaxy S9+']
       }
     },
-    {
-      name: "firefox",
-      use: {
-        browserName : 'firefox',
-        headless: false,
-        viewport: { width: 1280, height: 720 },
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        ignoreHttpsErrors: true,
-        trace: 'retain-on-failure'
-      }
-    }
     
   ]
   

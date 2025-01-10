@@ -1,20 +1,17 @@
 class LoginPage {
 
-  constructor(page)
-  {
+  constructor(page) {
     this.page = page;
     this.signInBtn = page.locator('//input[@id="login"]');
     this.userName = page.locator('//input[@id="userEmail"]');
     this.password = page.locator('//input[@id="userPassword"]');
   }
 
-  async goTo()
-  {
+  async goTo() {
     await this.page.goto("https://rahulshettyacademy.com/client")
   }
 
-  async validLogin(userName, password)    // This is a reusable utility for login, a method for valid login.
-  {
+  async validLogin(userName, password) {    // This is a reusable utility for login, a method for valid login.
     await this.userName.fill(userName);
     await this.password.fill(password);
     await this.signInBtn.click();

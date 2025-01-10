@@ -1,7 +1,6 @@
 class DashboardPage {
 
-  constructor(page)
-  {
+  constructor(page) {
     this.page = page;
     this.products = page.locator(".card-body");           // Grabs all elements from each product.
     this.productsText = page.locator(".card-body b");     // Grabs only the title element from each product.
@@ -9,8 +8,7 @@ class DashboardPage {
     this.orders = page.locator("button[routerlink*='myorders']");
   }
 
-  async searchProductAddCart(productName)
-  {
+  async searchProductAddCart(productName) {
     const titles = await this.productsText.allTextContents();  // This is all titles of the products.
     console.log(titles); 
     const count = await this.products.count();   // This will return the number of elements matching the selector <.card-body b> If this is coming from an array it will give the count. In this case it is an array.
@@ -23,13 +21,11 @@ class DashboardPage {
     }
   }
 
-  async navigateToOrders()
-  {
+  async navigateToOrders() {
     await this.orders.click();
   }
 
-  async navigateToCart()
-  {
+  async navigateToCart() {
     await this.cart.click();
   }
 }

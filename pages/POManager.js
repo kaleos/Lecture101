@@ -16,28 +16,23 @@ class POManager {
     this.cartPage = new CartPage(this.page);
   }
 
-  async getLoginPage()
-  {
+  async getLoginPage() {
     return this.loginPage;
   }
 
-  async getCartPage()
-  {
+  async getCartPage() {
     return this.cartPage;
   }
 
-  async getDashboardPage()
-  {
+  async getDashboardPage() {
     return this.dashboardPage;
   }
 
-  async getOrdersHistoryPage()
-  {
+  async getOrdersHistoryPage() {
     return this.ordersHistoryPage;
   }
 
-  async getOrdersReviewPage()
-  {
+  async getOrdersReviewPage() {
     return this.ordersReviewPage;
   }
 }

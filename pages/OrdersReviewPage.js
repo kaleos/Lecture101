@@ -2,8 +2,7 @@ const { expect } = require("@playwright/test");
 
 class OrdersReviewPage
 {
-constructor(page)
-{
+constructor(page) {
   this.page = page;
   this.country = page.locator("[placeholder*='Country']");
   this.dropdown = page.locator("//section[contains(@class, 'ta-results')]");  // Main locator is only visible when typing something for example uni for United.
@@ -14,8 +13,7 @@ constructor(page)
 
 }
 
-async searchCountryAndSelect(countryCode,countryName)
-{
+async searchCountryAndSelect(countryCode,countryName) {
   console.log(`Starting search for country: ${countryName} with code: ${countryCode}`);
   
   // Typing the country code with a delay to trigger auto-fill
@@ -31,8 +29,7 @@ async searchCountryAndSelect(countryCode,countryName)
   //console.log(`Number of options found: ${optionsCount}`);
 
   // Iterating through each option to find the matching country name
-  for(let i=0; i< optionsCount; ++i)
-  {
+  for(let i=0; i< optionsCount; ++i) {
     const text = await this.dropdown.locator("button").nth(i).textContent(); // textContent is needed to retrieve the actual text.
     //console.log(`Option ${i}: ${text.trim()}`);
 
@@ -46,13 +43,11 @@ async searchCountryAndSelect(countryCode,countryName)
     }
 }
 
-async VerifyEmailId(username)
-{
+async VerifyEmailId(username) {
   await expect(this.emailId).toHaveText(username);  // Compares the email id to be the same as the email address.
 }
 
-async SubmitAndGetOrderId()
-{
+async SubmitAndGetOrderId() {
   await this.submit.click();
   await expect(this.orderConfirmationText).toHaveText(" Thankyou for the order. ");
   return await this.orderId.textContent();  // Returns the order id.

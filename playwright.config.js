@@ -7,7 +7,7 @@ const config = {
   expect: {
 
     timeout: 30000,     // This is timeout for assertions, another good number could be 30000.
-    retries: 2,         // Retries a test up to 5x if it fails.
+    //retries: 2,         // Retries a test up to 5x if it fails.
     workers: 5,         // Number of workers to use for the test, basically the number of tests that can run in parallel.
   },
 
@@ -22,7 +22,7 @@ const config = {
         screenshot: 'only-on-failure',                // This will capture a screenshot of errors only.
         video: 'retain-on-failure',       // Records video for each test, but deletes the passing tests afterwards.
         ignoreHttpsErrors: true,
-        trace: 'retain-on-failure'       // To collect the trace on every execution with complete log with details. Setting to 'on' for is for both passed and failed logs, but <retain-on-failure> is enough for only failed tests.
+        trace: 'retain-on-failure',       // To collect the trace on every execution with complete log with details. Setting to 'on' for is for both passed and failed logs, but <retain-on-failure> is enough for only failed tests.
         //...devices['iPhone 11']
       }
     },

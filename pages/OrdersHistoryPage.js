@@ -1,15 +1,13 @@
 class OrdersHistoryPage
 {
-constructor(page)
-{
+constructor(page) {
   this.page = page;
   this.ordersTable = page.locator("//table");  // Locator for entire table.
   this.rows = page.locator("//tr[contains(@class, 'ng-star-inserted')]");  // All the rows from the Orders screen.
   this.orderdIdDetails =page.locator("//div[contains(@class, 'col-text')]");  // This is for the order id only after clicking on the View button.
 }
 
-async searchOrderAndSelect(orderId)
-{
+async searchOrderAndSelect(orderId) {
 
 await this.ordersTable.waitFor();
 for(let i=0; i<await this.rows.count(); ++i)
@@ -23,8 +21,7 @@ for(let i=0; i<await this.rows.count(); ++i)
   }
 }
 
-async getOrderId()
-  {
+async getOrderId() {
     return await this.orderdIdDetails.textContent();
   }
 

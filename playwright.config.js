@@ -42,13 +42,13 @@ const config = {
       name: "chrome",
       use: {
         browserName : 'chromium',
-        headless: false,
+        headless: true,
         viewport: { width: 1280, height: 720 },
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         ignoreHttpsErrors: true,
         permissions: ['geolocation'],
-        trace: 'retain-on-failure',
+        trace: 'on-first-retry', // Capture trace for failed tests on first retry
         //...devices['Galaxy S9+']
       }
     },

@@ -12,7 +12,7 @@ test(`Client App login for ${data.productName}`, async ({ page }) => {  // Now t
   const products = page.locator(".card-body");
   const loginPage = await poManager.getLoginPage();  
   await loginPage.goTo();
-  await loginPage.validLogin(data.userName,data.password);
+  await loginPage.validLogin(data.username,data.password);
   const dashboardPage = await poManager.getDashboardPage();
   await dashboardPage.searchProductAddCart(data.productName);  // Searches the product and adds it to the cart.
   await dashboardPage.navigateToCart();
@@ -46,6 +46,3 @@ customtest.only(`Verify another item can be tested ${data.productName}`, async (
   await cartPage.Checkout();
 })
 }
-
-// Test files will run in parallel.
-// Individual tests will run sequentially.

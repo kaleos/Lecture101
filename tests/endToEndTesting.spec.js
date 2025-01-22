@@ -1,6 +1,6 @@
-const {test, expect} = require('@playwright/test');
-const {customtest} = require('../utils/test-base');
-const {POManager} = require('../pages/POManager');
+const { test, expect } = require('@playwright/test');
+const { customtest } = require('../utils/test-base');
+const { POManager } = require('../pages/POManager');
 // Json->string->js object
 const dataset = JSON.parse(JSON.stringify(require("../utils/endToEndTestingTestData.json")));  // Now dataSet has all the things needed from the endToEndTestingTestData.json file
 

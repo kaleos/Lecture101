@@ -1,14 +1,10 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
-const {POManager} = require('../pages/POManager');
+const {POManager} = require('../../pages/POManager');
 const {expect} = require('@playwright/test');
 const playwright = require('@playwright/test');  // The playwright keyword helps generate a browser object.
 
 Given('The user logs in to the Ecommerce application with {string} and {string}', {timeout: 100*1000}, async function (username, password) {
-  const browser = await playwright.chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  this.poManager = new POManager(page);
-  const products = page.locator(".card-body");
+  const products = this.page.locator(".card-body");
   const loginPage = await this.poManager.getLoginPage();  
   await loginPage.goTo();
   await loginPage.validLogin(username, password);
@@ -39,3 +35,18 @@ Then('The order is displayed in the order history', async function () {
   await ordersHistoryPage.searchOrderAndSelect(orderId);
   expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
 });
+
+Given('The user logs in to the Ecommerce2 application with {string} and {string}', async function (username, password) {
+  const userName = this.page.locator('//input[@id="username"]');
+  const signIn = this.page.locator('//input[@id="signInBtn"]');
+  await this.page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+  console.log(await this.page.title());
+  await userName.fill(username);
+  await this.page.locator('//input[@id="password"]').fill(password);
+  await signIn.click();
+});
+
+Then('Verify error message is displayed', async function () {
+  //console.log(await this.page.locator("[style*='block']").textContent());  // This locator method will wait for the error message.
+  await expect(this.page.locator("[style*='block']")).toContainText('Incorrect');
+})

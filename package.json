@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "functionalTests": "npx playwright test --grep @Functional",
+    "uiTests": "npx playwright test --grep @UI",
+    "cucumberRegression": "npx cucumber-js --tags @Regression"
   },
   "keywords": [],
   "author": "",

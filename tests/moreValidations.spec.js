@@ -5,7 +5,7 @@ const { test, expect } = require("playwright/test");
 //test.describe.configure({mode:'parallel'});     // This will run the tests in parallel as opposed to sequentially.
 //test.describe.configure({mode:'serial'});       // This will run the tests sequentially as opposed to parallel. Also seems like this is the default mode at this point.
 
-test("Popup validations", async({page}) => {
+test("@Functional Popup validations", async({page}) => {
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
   const confirmBtn = page.locator("//input[@id='confirmbtn']");
   const mouseHoverBtn = page.locator("//button[@id='mousehover']");
@@ -23,12 +23,12 @@ test("Popup validations", async({page}) => {
   console.log(textCheck.split(" ")[1]);                                         // To retieve the text " Happy Subscibers!" we use the spaces therefore space in " " and the first index in the array.
 })
 
-test('Visual', async({page}) => {
+test('@UI Visual', async({page}) => {
   await page.goto("https://www.google.com/");
   expect(await page.screenshot()).toMatchSnapshot('landing.png');              // Screenshot here will take a screenshot of the entire page, then compare it to make sure the screenshot landing.png matches the initial screenshot of the page.
 })
 
-test("Screenshot & visual comparaison", async({page}) => {
+test("@UI Screenshot & visual comparaison", async({page}) => {
   const hideShowField = page.locator("//input[@id='displayed-text']");
 
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
